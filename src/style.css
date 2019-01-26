@@ -99,6 +99,23 @@ html, body{
 	left: 15%
 }
 
+#numpad-buttons button{
+	font-size: 1.5em;
+	height: 22%;
+	width: 30%;
+	position: absolute;
+}
+
+#btn-7{
+	top: 3%;
+	left: 3%;
+}
+
+#btn-8{
+	left: 35%;
+	top: 3%;
+}
+
 #operation-buttons{
 	height: 100%;
 	width: 35%;
