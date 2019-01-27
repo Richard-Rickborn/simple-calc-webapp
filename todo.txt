@@ -16,3 +16,12 @@
 
 -Hand-write a basic outline for the scripting structure
 -Start writing js skeleton code
+
+
+
+
+#########
+##OTHER##
+#########
+
+-Look at some other calc webapps for inspiration
