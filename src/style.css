@@ -10,6 +10,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html, body{
 	height: 100%;
 	width: 100%;
+	font-size: 16px;
 }
 
 #page-container{
@@ -25,8 +26,8 @@ html, body{
 	width: 60%;
 	background-color: #F5F5F5;
 	position: absolute;
-	top: 10%;
 	left: 20%;
+	top: 10%;
 }
 
 #calc-display{
@@ -35,8 +36,8 @@ html, body{
 	border: 1px solid;
 	/*background-color: red;*/
 	position: absolute;
-	top: 1em;
 	left: 3%;
+	top: 1em;
 	
 }
 
@@ -53,8 +54,13 @@ html, body{
 	width: 94%;
 	background-color: aquamarine;
 	position: absolute;
-	top: 20%;
 	left: 3%;
+	top: 20%;
+}
+
+#button-container button{
+	font-family: sans-serif;
+	position: absolute;
 }
 
 #system-buttons{
@@ -62,15 +68,14 @@ html, body{
 	width: 15%;
 	background-color: LightGreen;
 	position: absolute;
-	top: 0;
 	left: 0;
+	top: 0;
 }
 
 #system-buttons button{
 	font-size: 1.5em;
 	height: 22%;
 	width: 80%;
-	position: absolute;
 	left: 10%;
 }
 
@@ -103,17 +108,67 @@ html, body{
 	font-size: 1.5em;
 	height: 22%;
 	width: 30%;
-	position: absolute;
 }
 
 #btn-7{
-	top: 3%;
 	left: 3%;
+	top: 3%;
 }
 
 #btn-8{
 	left: 35%;
 	top: 3%;
+}
+
+#btn-9{
+	right: 3%;
+	top: 3%;
+}
+
+#btn-4{
+	left: 3%;
+	top: 27%
+}
+
+#btn-5{
+	left: 35%;
+	top: 27%
+}
+
+#btn-6{
+	right: 3%;
+	top: 27%
+}
+
+#btn-1{
+	left: 3%;
+	top: 51%;
+}
+
+#btn-2{
+	left: 35%;
+	top: 51%;
+}
+
+#btn-3{
+	right: 3%;
+	top: 51%;
+}
+
+#btn-0{
+	left: 3%;
+	top: 75%;
+}
+
+#btn-00{
+	left: 35%;
+	top: 75%;
+}
+
+#numpad-buttons #btn-dot{
+	right: 3%;
+	top: 75%;
+	font-size: 3em;
 }
 
 #operation-buttons{
@@ -123,4 +178,34 @@ html, body{
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+#operation-buttons button{
+	font-size: 1.5em;
+	height: 22%;
+	width: 45%;
+}
+
+.op-col-1{
+	left: 4%;
+}
+
+.op-col-2{
+	left: 51%
+}
+
+.op-row-1{
+	top: 3%;
+}
+
+.op-row-2{
+	top: 27%;
+}
+
+.op-row-3{
+	top: 51%;
+}
+
+.op-row-4{
+	top: 75%;
 }

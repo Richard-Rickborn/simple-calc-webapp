@@ -1,0 +1,18 @@
+###########
+##Styling##
+###########
+
+-Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
+-Play with borders/shadows, make the calculator feel more physical/mechanical
+-Mess around with button styling
+
+
+
+
+
+#################
+##Functionality##
+#################
+
+-Hand-write a basic outline for the scripting structure
+-Start writing js skeleton code
