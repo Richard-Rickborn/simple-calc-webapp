@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Javasscript Calculator Webapp</title>
+	<title>Simple Calculator Webapp</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js"></script>
 </head>
@@ -9,7 +9,7 @@
 	<div id="page-container">
 		<div id="calc-container">
 			<div id="calc-display">
-				<textarea id="display-window" readonly>temp text</textarea>
+				<p id="display-text">temp text</p>
 			</div>
 			<div id="button-container">
 				<div id="system-buttons">
@@ -36,15 +36,15 @@
 					<button id="btn-dot">.</button>
 				</div>
 				<div id="operation-buttons">
-					<button id="btn-expo">x^y</button>
-					<button id="btn-times">X</button>
-					<button id="btn-plus">+</button>
-					<button id="btn-equals">=</button>
+					<button id="btn-expo" class="op-col-1 op-row-1">x^y</button>
+					<button id="btn-times" class="op-col-1 op-row-2">X</button>
+					<button id="btn-plus" class="op-col-1 op-row-3">+</button>
+					<button id="btn-equals" class="op-col-1 op-row-4">=</button>
 					
-					<button id="btn-percent">%</button>
-					<button id="btn-divide">÷</button>
-					<button id="btn-minus">-</button>
-					<button id="btn-plusminus">+/-</button>
+					<button id="btn-percent" class="op-col-2 op-row-1">%</button>
+					<button id="btn-divide" class="op-col-2 op-row-2">÷</button>
+					<button id="btn-minus" class="op-col-2 op-row-3">-</button>
+					<button id="btn-plusminus" class="op-col-2 op-row-4">+/-</button>
 				</div>
 			</div>
 		</div>
