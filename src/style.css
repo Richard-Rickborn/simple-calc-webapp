@@ -25,6 +25,9 @@ html, body{
 	height: 80%;
 	width: 60%;
 	background-color: #F5F5F5;
+	border: 1px solid; /*add non-black color to ALL borders*/
+	border-left: 3px solid;
+	border-top: 2px solid;
 	position: absolute;
 	left: 20%;
 	top: 10%;
@@ -42,11 +45,11 @@ html, body{
 }
 
 #display-text{
-	height: 30%;
 	width: 100%;
+	font-size: 8vh;
 	text-align: right;
 	position: absolute;
-	top: 35%;
+	top: 2vh;
 }
 
 #button-container{
