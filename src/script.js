@@ -35,6 +35,8 @@ function updateDisplay(){
 updateExpression("1");
 updateExpression("+");
 updateExpression("2");
+updateExpression("*");
+updateExpression("100000000");
 
 
 resolveExpression();
