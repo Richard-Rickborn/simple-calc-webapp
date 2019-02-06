@@ -3,17 +3,12 @@ let previousCommand = "";
 let expResult = "";
 let displayWindow = document.getElementById("display-text");
 let displayingResult = false;
+let powerON = true;
 updateDisplay();
 
-//clean this up later vv
-/*document.getElementById("btn-7").addEventListener("click",function(){updateExpression("7");});
-
-document.getElementById("btn-plus").addEventListener("click",function(){updateExpression("+");});
-
-document.getElementById("btn-equals").addEventListener("click",function(){resolveExpression();});*/
-//clean this up later ^^
-
 let btn_table = {
+	"btn-ON":[function(){turnOnPower();}],
+	"btn-OFF":[function(){turnOffPower();}],
 	"btn-7":[function(){updateExpression("7");}],
 	"btn-8":[function(){updateExpression("8");}],
 	"btn-9":[function(){updateExpression("9");}],
@@ -26,55 +21,79 @@ let btn_table = {
 	"btn-0":[function(){updateExpression("0");}],
 	"btn-00":[function(){updateExpression("00");}],
 	"btn-dot":[function(){updateExpression(".");}],
+	"btn-times":[function(){updateExpression("*");}],
 	"btn-plus":[function(){updateExpression("+");}],
-	"btn-equals":[function(){resolveExpression();}]
+	"btn-equals":[function(){resolveExpression();}],
+	"btn-divide":[function(){updateExpression("/");}],
+	"btn-minus":[function(){updateExpression("-");}]
 };
 
 Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
 //pretty sure that's the longest line of javascript I've written so far, just saying
 
 function updateExpression(str){
-	currentExpression += str;
-	
-	if(displayingResult){
-		displayingResult = false;
+	if(powerON){
+		currentExpression += str;
+		
+		if(displayingResult){
+			displayingResult = false;
+		}
+		
+		if(expResult != ""){
+			expResult = "";
+		}
+		
+		updateDisplay();
+		console.log("updateExpression called: " + str);
 	}
-	
-	if(expResult != ""){
-		expResult = "";
-	}
-	
-	updateDisplay();
-	console.log("updateExpression called: " + str);
 }
 
 function resolveExpression(){
-	if(!displayingResult){
-		expResult = eval(currentExpression).toString();
-		displayingResult = true;
-		updateDisplay();
-		//previousCommand = //the last operation and number in the string, i.e. "1+1+2+7" would end up with a previousCommand of "+7"
-		currentExpression = "";
-	} else{
-		currentExpression = expResult + "+37"; //temp value until I can get lastOperation saving working
-		displayingResult = false;
-		resolveExpression();
-	}
-}
-
-function updateDisplay(){
-	if(displayingResult){
-		displayWindow.innerHTML = expResult;
-	} else{
-		if(currentExpression != ""){
-			displayWindow.innerHTML = currentExpression;
+	if(powerON){
+		if(!displayingResult){
+			expResult = eval(currentExpression).toString();
+			displayingResult = true;
+			updateDisplay();
+			//previousCommand = //the last operation and number in the string, i.e. "1+1+2+7" would end up with a previousCommand of "+7"
+			currentExpression = "";
 		} else{
-			displayWindow.innerHTML = "0";
+			currentExpression = expResult + "+37"; //temp value until I can get lastOperation saving working
+			displayingResult = false;
+			resolveExpression();
 		}
 	}
 }
 
-function runTestExpression(){
+function updateDisplay(){
+	if(powerON){
+		if(displayingResult){
+			displayWindow.innerHTML = expResult;
+		} else{
+			if(currentExpression != ""){
+				displayWindow.innerHTML = currentExpression.replace("*","x");
+			} else{
+				displayWindow.innerHTML = "0";
+			}
+		}
+	}
+}
+
+function turnOnPower(){
+	//if power is already on, have the "C" function happen instead
+	powerON = true;
+	updateDisplay();
+}
+
+function turnOffPower(){
+	if(powerON){
+		powerON = false;
+		displayWindow.innerHTML = ""
+		//then reset memory
+	}
+}
+
+//vv don't really need this function anymore, maybe clean this up soon
+/*function runTestExpression(){
 	updateExpression("1");
 	updateExpression("+");
 	updateExpression("2");
@@ -82,4 +101,4 @@ function runTestExpression(){
 	updateExpression("100000000");
 	resolveExpression();
 	console.log(expResult);
-}  //don't really need this function anymore, maybe clean this up soon
+}*/  //^^ don't really need this function anymore, maybe clean this up soon
