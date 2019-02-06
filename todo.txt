@@ -3,8 +3,10 @@
 ###########
 
 -Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
--Play with borders/shadows, make the calculator feel more physical/mechanical
 -Mess around with button styling
+-Revamp entire calc design, make it more digital
+	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
+	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
 
 
 
@@ -14,9 +16,16 @@
 ##Functionality##
 #################
 
--Hand-write a basic outline for the scripting structure
--Start writing js skeleton code
-
+-Add system buttons to btn_table
+	-Also figure out the specific difference in functionality between AC/CE/ON/C
+-Add the rest of operations buttons to btn_table
+-Get "lastOperation" saving working and apply that functionality to double-pressing equals button
+-Make resolutions return the same decimal precision that was given
+	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
+-Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
+-Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
+-Implement scientific notation for results larger than the display limit
+-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
 
 
 
