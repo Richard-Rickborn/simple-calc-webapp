@@ -4,9 +4,9 @@ let expResult = "";
 let displayWindow = document.getElementById("display-text");
 let displayingResult = false;
 let powerON = true;
-updateDisplay();
+//updateDisplay();
 
-class Calculation {
+class ExpressionGenerator {
 	
 	constructor(){
 		this.nums = [];
@@ -19,6 +19,7 @@ class Calculation {
 		//add a check that currentNumber is a legit number
 		this.nums.push(this.currentNumber);
 		this.currentNumber = "";
+		this.updateDisplay();
 	}
 	
 	addOp(op){
@@ -27,10 +28,35 @@ class Calculation {
 	}
 	
 	updateCurrentNumber(num){
+		if(displayingResult){
+			displayingResult = false;
+		}
 		this.currentNumber = this.currentNumber.concat(num);
+		this.updateDisplay();
+		//console.log(this.currentNumber);
 	}
 	
-	toString(){
+	updateDisplay(){
+		if(powerON){
+			if(displayingResult){
+				displayWindow.innerHTML = this.toEvalString();
+			} else{
+				displayWindow.innerHTML = this.toString() + this.currentNumber;
+			}
+		}
+	}
+	
+	tempResolveExpression(){
+		if(powerON){
+			if(!displayingResult){
+				displayingResult = true;
+				this.updateDisplay();
+				this.currentNumber = "";
+			}
+		}
+	}
+	
+	toEvalString(){
 		let exprString = "";
 		for(let i = 0; i < this.nums.length; i++){
 			if(this.ops[i] != "^"){
@@ -46,7 +72,23 @@ class Calculation {
 					exprString = exprString + "Math.pow(" + this.nums[i] + ",1)";
 				}
 			}
-		console.log(i + ":  " + exprString);
+		//console.log(i + ":  " + exprString);
+		}
+		if(exprString != ""){
+			return exprString;
+		} else{
+			//throw an error?
+			return "0";
+		}
+	}
+	
+	toString(){
+		let exprString = "";
+		for(let i = 0; i < this.nums.length; i++){
+			exprString = exprString + this.nums[i];
+			if(i < this.ops.length){
+				exprString = exprString + this.ops[i];//.replace("*","x");
+			}
 		}
 		if(exprString != ""){
 			return exprString;
@@ -57,7 +99,7 @@ class Calculation {
 	}
 }
 
-let testCalc = new Calculation();
+/*let testCalc = new ExpressionGenerator();
 
 testCalc.updateCurrentNumber("2");
 testCalc.updateCurrentNumber("2");
@@ -86,12 +128,13 @@ console.log(testCalc.ops);
 console.log(testCalc.currentNumber === "");
 //^^ so far this is CONFIRMED working.  Now, once I get the toString() working, I should be able to implement this into the actual calculator and clean up a lot of code in this file.
 
-console.log("Final result:  '" + testCalc.toString() + "'");
+console.log("Final result:  '" + testCalc.toEvalString() + "'");
 //LATEST UPDATE:
-/* The toString() function appears to be working.  The next step is to integrate the Calculation class into the actual calculator functionality and do a bunch of tests to make sure strings are being generated properly, then add in eval() functionality with equals and make sure order of operations are being observed
+/* The toString() function appears to be working.  The next step is to integrate the ExpressionGenerator class into the actual calculator functionality and do a bunch of tests to make sure strings are being generated properly, then add in eval() functionality with equals and make sure order of operations are being observed
 */
 
-let btn_table = {
+//ORIGINAL BUTTON TABLE
+/*let btn_table = {
 	"btn-ON":[function(){turnOnPower();}],
 	"btn-OFF":[function(){turnOffPower();}],
 	"btn-7":[function(){updateExpression("7");}],
@@ -111,12 +154,38 @@ let btn_table = {
 	"btn-equals":[function(){resolveExpression();}],
 	"btn-divide":[function(){updateExpression("/");}],
 	"btn-minus":[function(){updateExpression("-");}]
+};*/
+
+let expression = new ExpressionGenerator();
+expression.updateDisplay();
+
+let btn_table = {
+	"btn-ON":[function(){turnOnPower();}],
+	"btn-OFF":[function(){turnOffPower();}],
+	"btn-7":[function(){expression.updateCurrentNumber("7");}],
+	"btn-8":[function(){expression.updateCurrentNumber("8");}],
+	"btn-9":[function(){expression.updateCurrentNumber("9");}],
+	"btn-4":[function(){expression.updateCurrentNumber("4");}],
+	"btn-5":[function(){expression.updateCurrentNumber("5");}],
+	"btn-6":[function(){expression.updateCurrentNumber("6");}],
+	"btn-1":[function(){expression.updateCurrentNumber("1");}],
+	"btn-2":[function(){expression.updateCurrentNumber("2");}],
+	"btn-3":[function(){expression.updateCurrentNumber("3");}],
+	"btn-0":[function(){expression.updateCurrentNumber("0");}],
+	"btn-00":[function(){expression.updateCurrentNumber("00");}],
+	"btn-dot":[function(){expression.updateCurrentNumber(".");}],
+	"btn-expo":[function(){expression.addOp("^");}],
+	"btn-times":[function(){expression.addOp("*");}],
+	"btn-plus":[function(){expression.addOp("+");}],
+	"btn-equals":[function(){expression.tempResolveExpression();}],
+	"btn-divide":[function(){expression.addOp("/");}],
+	"btn-minus":[function(){expression.addOp("-");}]
 };
 
 Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
 //pretty sure that's the longest line of javascript I've written so far, just saying
 
-function updateExpression(str){
+/*function updateExpression(str){
 	if(powerON){
 		currentExpression += str;
 		
@@ -131,7 +200,7 @@ function updateExpression(str){
 		updateDisplay();
 		console.log("updateExpression called: " + str);
 	}
-}
+}*/
 
 function resolveExpression(){
 	if(powerON){
@@ -149,7 +218,7 @@ function resolveExpression(){
 	}
 }
 
-function updateDisplay(){
+/*function updateDisplay(){
 	if(powerON){
 		if(displayingResult){
 			displayWindow.innerHTML = expResult;
@@ -161,7 +230,7 @@ function updateDisplay(){
 			}
 		}
 	}
-}
+}*/
 
 function turnOnPower(){
 	//if power is already on, have the "C" function happen instead
