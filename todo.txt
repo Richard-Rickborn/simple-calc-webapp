@@ -38,3 +38,4 @@
 #########
 
 -Look at some other calc webapps for inspiration
+-Once the current branch for redesigning the storage functionality is finished and merged, make a new branch for cleaning up old code and refactoring the new code into something a little bit cleaner.
