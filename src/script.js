@@ -1,12 +1,158 @@
-let currentExpression = "";
+/*let currentExpression = "";
 let previousCommand = "";
 let expResult = "";
 let displayWindow = document.getElementById("display-text");
 let displayingResult = false;
 let powerON = true;
-//updateDisplay();
+//updateDisplay();*/
 
-class ExpressionGenerator {
+let currentExp = "";
+let currentNumber = "";
+
+let displayingResult = false;
+let powerON = true;
+
+let displayWindow = document.getElementById("display-text");
+
+let nums = [];
+let ops = [];
+
+updateDisplay();
+
+let btn_table = {
+	"btn-ON":[function(){turnOnPower();}],
+	"btn-OFF":[function(){turnOffPower();}],
+	"btn-7":[function(){updateCurrentNumber("7");}],
+	"btn-8":[function(){updateCurrentNumber("8");}],
+	"btn-9":[function(){updateCurrentNumber("9");}],
+	"btn-4":[function(){updateCurrentNumber("4");}],
+	"btn-5":[function(){updateCurrentNumber("5");}],
+	"btn-6":[function(){updateCurrentNumber("6");}],
+	"btn-1":[function(){updateCurrentNumber("1");}],
+	"btn-2":[function(){updateCurrentNumber("2");}],
+	"btn-3":[function(){updateCurrentNumber("3");}],
+	"btn-0":[function(){updateCurrentNumber("0");}],
+	"btn-00":[function(){updateCurrentNumber("00");}],
+	"btn-dot":[function(){updateCurrentNumber(".");}],
+	"btn-expo":[function(){addOp("^");}],
+	"btn-times":[function(){addOp("*");}],
+	"btn-plus":[function(){addOp("+");}],
+	"btn-equals":[function(){tempResolveExpression();}],
+	"btn-divide":[function(){addOp("/");}],
+	"btn-minus":[function(){addOp("-");}]
+};
+
+Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
+//pretty sure that's the longest line of javascript I've written so far, just saying
+
+/***  FUNCTION DEFS  ***/
+
+function addNum(){
+	//add a check that currentNumber is a legit number
+	nums.push(currentNumber);
+	currentNumber = "";
+	updateDisplay();
+}
+
+function addOp(op){
+	addNum();
+	ops.push(op);
+}
+
+function getDisplayString(){
+	let exprString = "";
+	for(let i = 0; i < nums.length; i++){
+		exprString = exprString + nums[i];
+		if(i < ops.length){
+			exprString = exprString + ops[i];//.replace("*","x");
+		}
+	}
+	if(exprString != ""){
+		return exprString;
+	} else{
+		//throw an error?
+		return "0";
+	}
+}
+
+function getEvalString(){
+	let exprString = "";
+	for(let i = 0; i < nums.length; i++){
+		if(ops[i] != "^"){
+			exprString = exprString + nums[i];
+			if(i < ops.length){
+				exprString = exprString + ops[i];
+			}
+		} else {
+			/*if(i < nums.length - 2){
+				exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
+				i = i + 1;
+			} else{
+				exprString = exprString + "Math.pow(" + nums[i] + ",1)";
+			}*/
+			exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
+			i = i + 1;
+		}
+	//console.log(i + ":  " + exprString);
+	}
+	if(exprString != ""){
+		return exprString;
+	} else{
+		//throw an error?
+		return "0";
+	}
+}
+
+function tempResolveExpression(){
+	if(powerON){
+		if(!displayingResult){
+			displayingResult = true;
+			updateDisplay();
+			//setting previous command storage happens here?
+			currentNumber = "";
+		}
+	}
+}
+
+function turnOnPower(){
+	//if power is already on, have the "C" function happen instead
+	powerON = true;
+	updateDisplay();
+}
+
+function turnOffPower(){
+	if(powerON){
+		powerON = false;
+		displayWindow.innerHTML = ""
+		//then reset memory
+	}
+}
+
+function updateCurrentNumber(num){
+	if(displayingResult){
+		displayingResult = false;
+	}
+	currentNumber = currentNumber.concat(num);
+	updateDisplay();
+	//console.log("currentNumber value:  " + currentNumber);
+}
+
+function updateDisplay(){
+	if(powerON){
+		if(displayingResult){
+			displayWindow.innerHTML = getEvalString() + currentNumber;
+		} else{
+			let displayStr = getDisplayString();
+			if(displayStr == "0" && currentNumber != ""){
+				displayWindow.innerHTML = currentNumber;
+			} else {
+				displayWindow.innerHTML = getDisplayString() + currentNumber;
+			}
+		}
+	}
+}
+
+/*class ExpressionGenerator {
 	
 	constructor(){
 		this.nums = [];
@@ -97,7 +243,7 @@ class ExpressionGenerator {
 			return "0";
 		}
 	}
-}
+}*/
 
 /*let testCalc = new ExpressionGenerator();
 
@@ -156,35 +302,6 @@ console.log("Final result:  '" + testCalc.toEvalString() + "'");
 	"btn-minus":[function(){updateExpression("-");}]
 };*/
 
-let expression = new ExpressionGenerator();
-expression.updateDisplay();
-
-let btn_table = {
-	"btn-ON":[function(){turnOnPower();}],
-	"btn-OFF":[function(){turnOffPower();}],
-	"btn-7":[function(){expression.updateCurrentNumber("7");}],
-	"btn-8":[function(){expression.updateCurrentNumber("8");}],
-	"btn-9":[function(){expression.updateCurrentNumber("9");}],
-	"btn-4":[function(){expression.updateCurrentNumber("4");}],
-	"btn-5":[function(){expression.updateCurrentNumber("5");}],
-	"btn-6":[function(){expression.updateCurrentNumber("6");}],
-	"btn-1":[function(){expression.updateCurrentNumber("1");}],
-	"btn-2":[function(){expression.updateCurrentNumber("2");}],
-	"btn-3":[function(){expression.updateCurrentNumber("3");}],
-	"btn-0":[function(){expression.updateCurrentNumber("0");}],
-	"btn-00":[function(){expression.updateCurrentNumber("00");}],
-	"btn-dot":[function(){expression.updateCurrentNumber(".");}],
-	"btn-expo":[function(){expression.addOp("^");}],
-	"btn-times":[function(){expression.addOp("*");}],
-	"btn-plus":[function(){expression.addOp("+");}],
-	"btn-equals":[function(){expression.tempResolveExpression();}],
-	"btn-divide":[function(){expression.addOp("/");}],
-	"btn-minus":[function(){expression.addOp("-");}]
-};
-
-Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
-//pretty sure that's the longest line of javascript I've written so far, just saying
-
 /*function updateExpression(str){
 	if(powerON){
 		currentExpression += str;
@@ -202,7 +319,7 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 	}
 }*/
 
-function resolveExpression(){
+/*function resolveExpression(){
 	if(powerON){
 		if(!displayingResult){
 			expResult = eval(currentExpression).toString();
@@ -216,7 +333,7 @@ function resolveExpression(){
 			resolveExpression();
 		}
 	}
-}
+}*/
 
 /*function updateDisplay(){
 	if(powerON){
@@ -231,20 +348,6 @@ function resolveExpression(){
 		}
 	}
 }*/
-
-function turnOnPower(){
-	//if power is already on, have the "C" function happen instead
-	powerON = true;
-	updateDisplay();
-}
-
-function turnOffPower(){
-	if(powerON){
-		powerON = false;
-		displayWindow.innerHTML = ""
-		//then reset memory
-	}
-}
 
 //vv don't really need this function anymore, maybe clean this up soon
 /*function runTestExpression(){
