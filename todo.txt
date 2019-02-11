@@ -8,7 +8,7 @@
 	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
 	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
 -there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
--Make a secondary CSS file for experimenting with a new styling and try a simple fullscreen digital design
+-Remember to do any styling changes in a new branch, gotta start using branches correctly.
 
 
 
@@ -17,18 +17,17 @@
 ##Functionality##
 #################
 
--Need to re-design the functionality of how the current expression is stored.  With the current method, things like saving the previous command for multiple presses of equals, and implementing exponents by calling Math.pow() on the previous number aren't really possible.  Do some brainstorming and come up with a more convienent storage method.
--related to the above, implement some kind of memory storage system (i.e. for saving previous command)
--Add system buttons to btn_table
-	-Also figure out the specific difference in functionality between AC/CE/ON/C
+-Perhaps implement parentheses buttons?
+-Implement some kind of memory storage system and implement functionality for double-pressing equals button
+-Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
 -Add the rest of operations buttons to btn_table
--Get "lastOperation" saving working and apply that functionality to double-pressing equals button
--Make resolutions return the same decimal precision that was given
+	-iirc, the only one left to implement is "+/-", which will be extremely easy
+-Make answers return the same decimal precision that was given
 	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
 -Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
 -Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
--Implement scientific notation for results larger than the display limit
--Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
+	-Implement scientific notation for results larger than the display limit
+	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
 -There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
 
 
@@ -37,5 +36,7 @@
 ##OTHER##
 #########
 
+-Assign a priority to each to-do item and organize each group of tasks by priority
+-Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
 -Look at some other calc webapps for inspiration
--Once the current branch for redesigning the storage functionality is finished and merged, make a new branch for cleaning up old code and refactoring the new code into something a little bit cleaner.
+-Make a new branch for cleaning up old code and refactoring the new code into something a little bit cleaner.
