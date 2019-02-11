@@ -16,6 +16,7 @@ let displayWindow = document.getElementById("display-text");
 
 let nums = [];
 let ops = [];
+let expr = [];
 
 updateDisplay();
 
@@ -49,17 +50,39 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 
 function addNum(){
 	//add a check that currentNumber is a legit number
-	nums.push(currentNumber);
+	expr.push(currentNumber);
 	currentNumber = "";
 	updateDisplay();
 }
 
 function addOp(op){
-	addNum();
-	ops.push(op);
+	if(currentNumber != ""){
+		addNum();
+		expr.push(op);
+		updateDisplay();
+	}
 }
 
 function getDisplayString(){
+	let exprString = expr.join("").replace("*","x") + currentNumber;
+	return exprString;
+}
+
+function getEvalString(){
+	let evalArr = [];
+	let exprLen = expr.length;
+	for(let i = 0; i < exprLen; i++){
+		if(expr[i] == "^"){
+			evalArr.push("Math.pow(" + evalArr.pop() + "," + expr[i+1] + ")");
+			i += 1;
+		} else{
+			evalArr.push(expr[i]);
+		}
+	}
+	return evalArr.join("");
+}
+
+/*function getDisplayString(){
 	let exprString = "";
 	for(let i = 0; i < nums.length; i++){
 		exprString = exprString + nums[i];
@@ -73,9 +96,9 @@ function getDisplayString(){
 		//throw an error?
 		return "0";
 	}
-}
+}*/
 
-function getEvalString(){
+/*function getEvalString(){
 	let exprString = "";
 	for(let i = 0; i < nums.length; i++){
 		if(ops[i] != "^"){
@@ -84,13 +107,13 @@ function getEvalString(){
 				exprString = exprString + ops[i];
 			}
 		} else {
-			/*if(i < nums.length - 2){
+			/**if(i < nums.length - 2){
 				exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
 				i = i + 1;
 			} else{
 				exprString = exprString + "Math.pow(" + nums[i] + ",1)";
-			}*/
-			exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
+			}**/
+			/*exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
 			i = i + 1;
 		}
 	//console.log(i + ":  " + exprString);
@@ -101,15 +124,16 @@ function getEvalString(){
 		//throw an error?
 		return "0";
 	}
-}
+}*/
 
 function tempResolveExpression(){
 	if(powerON){
 		if(!displayingResult){
+			addNum();
 			displayingResult = true;
 			updateDisplay();
 			//setting previous command storage happens here?
-			currentNumber = "";
+			currentNumber = "";//seems unecessary?  currentNumber gets cleared in addNum()
 		}
 	}
 }
@@ -140,15 +164,17 @@ function updateCurrentNumber(num){
 function updateDisplay(){
 	if(powerON){
 		if(displayingResult){
-			displayWindow.innerHTML = getEvalString() + currentNumber;
+			displayWindow.innerHTML = getEvalString();
 		} else{
 			let displayStr = getDisplayString();
 			if(displayStr == "0" && currentNumber != ""){
 				displayWindow.innerHTML = currentNumber;
 			} else {
-				displayWindow.innerHTML = getDisplayString() + currentNumber;
+				displayWindow.innerHTML = getDisplayString();
 			}
 		}
+		console.log("currentNumber value:  " + currentNumber);
+		console.log("expr array:  " + expr);
 	}
 }
 
