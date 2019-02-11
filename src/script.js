@@ -14,8 +14,6 @@ let powerON = true;
 
 let displayWindow = document.getElementById("display-text");
 
-let nums = [];
-let ops = [];
 let expr = [];
 
 updateDisplay();
@@ -79,52 +77,8 @@ function getEvalString(){
 			evalArr.push(expr[i]);
 		}
 	}
-	return evalArr.join("");
+	return eval(evalArr.join(""));
 }
-
-/*function getDisplayString(){
-	let exprString = "";
-	for(let i = 0; i < nums.length; i++){
-		exprString = exprString + nums[i];
-		if(i < ops.length){
-			exprString = exprString + ops[i];//.replace("*","x");
-		}
-	}
-	if(exprString != ""){
-		return exprString;
-	} else{
-		//throw an error?
-		return "0";
-	}
-}*/
-
-/*function getEvalString(){
-	let exprString = "";
-	for(let i = 0; i < nums.length; i++){
-		if(ops[i] != "^"){
-			exprString = exprString + nums[i];
-			if(i < ops.length){
-				exprString = exprString + ops[i];
-			}
-		} else {
-			/**if(i < nums.length - 2){
-				exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
-				i = i + 1;
-			} else{
-				exprString = exprString + "Math.pow(" + nums[i] + ",1)";
-			}**/
-			/*exprString = exprString + "Math.pow(" + nums[i] + "," + nums[i+1] + ")";
-			i = i + 1;
-		}
-	//console.log(i + ":  " + exprString);
-	}
-	if(exprString != ""){
-		return exprString;
-	} else{
-		//throw an error?
-		return "0";
-	}
-}*/
 
 function tempResolveExpression(){
 	if(powerON){
@@ -134,6 +88,7 @@ function tempResolveExpression(){
 			updateDisplay();
 			//setting previous command storage happens here?
 			currentNumber = "";//seems unecessary?  currentNumber gets cleared in addNum()
+			expr = [];
 		}
 	}
 }
