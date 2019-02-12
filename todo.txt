@@ -56,6 +56,5 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## OTHER ##
 ###########
 
--[2*] [M] Assign a priority to each to-do item and organize each group of tasks by priority
 -[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
 -[4] [H] Look at some other calc webapps for inspiration
