@@ -57,4 +57,5 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ###########
 
 -[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
+-[3] [M] Write up a readme for the repo
 -[4] [H] Look at some other calc webapps for inspiration
