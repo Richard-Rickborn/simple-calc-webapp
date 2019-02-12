@@ -37,18 +37,20 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 	-memory should reset when power is turned off
 	-lastOperation value should probably be set during resolveExpression()
 -[2*] [M] Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
+-[2*] [M] Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
+-[2*] [M] When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
 -[3] [L] Add the rest of operations buttons to btn_table
 	-iirc, the only one left to implement is "+/-", which will be extremely easy
 -[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
+-[3] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
 -[3] [M/H] Make answers return the same decimal precision that was given
 	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
 -[3] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-Implement scientific notation for results larger than the display limit
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
+-[4] [H] Write some tests?
 -[5] [L/M] Perhaps implement parentheses buttons?
 -[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
-
-
 
 ###########
 ## OTHER ##
