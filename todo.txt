@@ -19,6 +19,8 @@
 
 -Perhaps implement parentheses buttons?
 -Implement some kind of memory storage system and implement functionality for double-pressing equals button
+	-memory should reset when power is turned off
+	-lastOperation value should probably be set during resolveExpression()
 -Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
 -Add the rest of operations buttons to btn_table
 	-iirc, the only one left to implement is "+/-", which will be extremely easy
@@ -30,7 +32,9 @@
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
 -There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
 -Write some tests?
-
+-Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
+-When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
+-Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
 
 
 #########
