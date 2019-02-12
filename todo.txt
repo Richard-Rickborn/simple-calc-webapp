@@ -1,46 +1,61 @@
-###########
-##Styling##
-###########
+Task listings will be structured like this
+[priority] [time investment/difficulty] -task
 
--Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
--Mess around with button styling
--Revamp entire calc design, make it more digital
+priority will be graded from 1 - 5, with 1 being the highest priority:
+	[1**]:  Critical task, do this as soon as possible
+	[2*]:	Absolutely must be done, but not very immediate or time-sensitive
+	[3]:	You don't need to do this yet, but you can see it looming on the horizon
+	[4]:	Eh, look into it at some point
+	[5]:	No rush on this, save it for a rainy day when you don't know what else to do
+
+time investment/difficulty will be graded on a pretty loose scale of light, medium, and hard.
+	Light:  Easy and/or requiring little time, for example any kind of one-line bug fix, or adding a simple CSS hover effect to a specific element.  Light tasks are expected to take up to one pomodoro, no longer.
+	
+	Medium:  A pretty average task, might take a couple pomodoros but it's doable and I know how I'm going to do it, for example (with my current knowledge), a medium task might be implementing a mergesort (would have to take a few minutes to remind myself how mergesort works but I know it's not super hard) or using console.log to track down the source of some unintended side-effect.
+	
+	Hard:  A difficult task that either I know will be extremely time consuming, or a task that I don't even know where to start with.  With where I'm at right now in my knowledge, a hard task would be, for example, setting up a basic server with Node.js (no idea how to do that, would have to sink time into tutorials and reading docs), or rewriting/refactoring large sections of an existing codebase (I know how to do it, but it's certain to take a lot of time).
+
+
+#############
+## Styling ##
+#############
+
+-[1**] [L] Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
+-[2*] Revamp entire calc design, make it more digital
 	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
 	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
--there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
--Remember to do any styling changes in a new branch, gotta start using branches correctly.
+-[3] [M] there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
 
 
 
 
-#################
-##Functionality##
-#################
+###################
+## Functionality ##
+###################
 
--Perhaps implement parentheses buttons?
--Implement some kind of memory storage system and implement functionality for double-pressing equals button
--Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
--Add the rest of operations buttons to btn_table
+-[1**] [M] Implement some kind of memory storage system and implement functionality for double-pressing equals button
+	-memory should reset when power is turned off
+	-lastOperation value should probably be set during resolveExpression()
+-[2*] [M] Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
+-[2*] [M] Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
+-[2*] [M] When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
+-[3] [L] Add the rest of operations buttons to btn_table
 	-iirc, the only one left to implement is "+/-", which will be extremely easy
--Make answers return the same decimal precision that was given
+-[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
+-[3] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
+-[3] [M/H] Make answers return the same decimal precision that was given
 	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
--Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
--Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
+-[3] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-Implement scientific notation for results larger than the display limit
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
--There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
--Write some tests?
--Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
--When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
--Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
+-[4] [H] Write some tests?
+-[5] [L/M] Perhaps implement parentheses buttons?
+-[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
 
+###########
+## OTHER ##
+###########
 
-
-#########
-##OTHER##
-#########
-
--Assign a priority to each to-do item and organize each group of tasks by priority
--Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
--Look at some other calc webapps for inspiration
--Make a new branch for cleaning up old code and refactoring the new code into something a little bit cleaner.
+-[2*] [M] Assign a priority to each to-do item and organize each group of tasks by priority
+-[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
+-[4] [H] Look at some other calc webapps for inspiration
