@@ -21,7 +21,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 #############
 
 -[1**] [L] Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
--[4] [H] Experiment with different button stylings
 -[2*] Revamp entire calc design, make it more digital
 	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
 	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
@@ -34,20 +33,21 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[5] [L/M] Perhaps implement parentheses buttons?
 -[1**] [M] Implement some kind of memory storage system and implement functionality for double-pressing equals button
 	-memory should reset when power is turned off
 	-lastOperation value should probably be set during resolveExpression()
 -[2*] [M] Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
 -[3] [L] Add the rest of operations buttons to btn_table
 	-iirc, the only one left to implement is "+/-", which will be extremely easy
+-[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
 -[3] [M/H] Make answers return the same decimal precision that was given
 	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
--[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
 -[3] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-Implement scientific notation for results larger than the display limit
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
+-[5] [L/M] Perhaps implement parentheses buttons?
 -[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
+
 
 
 ###########
