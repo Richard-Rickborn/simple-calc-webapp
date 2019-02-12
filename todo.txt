@@ -29,6 +29,10 @@
 	-Implement scientific notation for results larger than the display limit
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
 -There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
+-Write some tests?
+-Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
+-When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
+-Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
 
 
 
