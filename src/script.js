@@ -29,7 +29,8 @@ let btn_table = {
 	"btn-plus":[function(){addOp("+");}],
 	"btn-equals":[function(){resolveExpression();}],
 	"btn-divide":[function(){addOp("/");}],
-	"btn-minus":[function(){addOp("-");}]
+	"btn-minus":[function(){addOp("-");}],
+	"btn-plusminus":[function(){plusMinus();}]
 };
 
 Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
@@ -40,9 +41,14 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 /***  FUNCTION DEFS  ***/
 
 function addNum(){
-	expr.push(currentNumber);
-	currentNumber = "";
-	updateDisplay();
+	if(!isNaN(Number(currentNumber))){
+		expr.push(currentNumber);
+		currentNumber = "";
+		updateDisplay();
+	} else {
+		console.log("Error in addNum(), currentNumber '" + currentNumber + "' is not a number");
+		displayWindow.innerHTML = "Err"
+	}
 }
 
 function addOp(op){
@@ -72,7 +78,14 @@ function getEvalString(){
 			evalArr.push(expr[i]);
 		}
 	}
-	return eval(evalArr.join(""));
+	return eval(evalArr.join("").replace("--","+"));
+}
+
+function plusMinus(){
+	if(currentNumber != ""){
+		currentNumber = currentNumber*-1;
+		updateDisplay();
+	}
 }
 
 function resolveExpression(){
