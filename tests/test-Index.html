@@ -1,13 +1,54 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Just some good ol' Unit Tests</title>
-<script src="../src/script.js></script>
-<script src="testing.js"></script>
+	<title>Just some good ol' Unit Tests</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div id="page-container">
-
-</div>
+	<div id="page-container">
+		<div id="calc-container">
+			<div id="calc-display">
+				<p id="display-text">temp text</p>
+			</div>
+			<div id="button-container">
+				<div id="system-buttons">
+					<button id="btn-ON">ON/C</button>
+					<button id="btn-CE">CE</button>
+					<button id="btn-OFF">OFF</button>
+					<button id="btn-AC">AC</button>
+				</div>
+				<div id="numpad-buttons">
+					<button id="btn-7">7</button>
+					<button id="btn-8">8</button>
+					<button id="btn-9">9</button>
+					
+					<button id="btn-4">4</button>
+					<button id="btn-5">5</button>
+					<button id="btn-6">6</button>
+					
+					<button id="btn-1">1</button>
+					<button id="btn-2">2</button>
+					<button id="btn-3">3</button>
+					
+					<button id="btn-0">0</button>
+					<button id="btn-00">00</button>
+					<button id="btn-dot">.</button>
+				</div>
+				<div id="operation-buttons">
+					<button id="btn-expo" class="op-col-1 op-row-1">x^y</button>
+					<button id="btn-times" class="op-col-1 op-row-2">X</button>
+					<button id="btn-plus" class="op-col-1 op-row-3">+</button>
+					<button id="btn-equals" class="op-col-1 op-row-4">=</button>
+					
+					<button id="btn-percent" class="op-col-2 op-row-1">%</button>
+					<button id="btn-divide" class="op-col-2 op-row-2">รท</button>
+					<button id="btn-minus" class="op-col-2 op-row-3">-</button>
+					<button id="btn-plusminus" class="op-col-2 op-row-4">+/-</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../src/script.js"></script>
+	<script src="testing.js"></script>
 </body>
 </html>
