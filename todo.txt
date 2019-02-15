@@ -38,6 +38,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 -[2*] [M] Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
 -[2*] [M] Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
 -[2*] [M] When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
+-[2*] [H] Redesign display functionality:  Display should have 2 rows:  1st row will be current working expression, display in smaller text, while the 2nd row will be the currentNumber value, displayed in larger text.
 -[3] [M] Add the rest of operations buttons to btn_table
 	-the only op button left is "%", which will take a [M] to implement
 -[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
@@ -50,7 +51,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 -[4] [H] Write some tests?
 -[5] [L/M] Perhaps implement parentheses buttons?
 -[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
--[2*] [H] Redesign display functionality:  Display should have 2 rows:  1st row will be current working expression, display in smaller text, while the 2nd row will be the currentNumber value, displayed in larger text.
 
 ###########
 ## OTHER ##
