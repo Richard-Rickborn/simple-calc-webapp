@@ -20,7 +20,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Styling ##
 #############
 
--[1**] [L] Change system and numpad button div stylings to reference positioning by class, see operations div for how it's done.
 -[2*] Revamp entire calc design, make it more digital
 	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
 	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
