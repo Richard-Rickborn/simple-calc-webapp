@@ -50,6 +50,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 -[4] [H] Write some tests?
 -[5] [L/M] Perhaps implement parentheses buttons?
 -[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
+-[2*] [H] Redesign display functionality:  Display should have 2 rows:  1st row will be current working expression, display in smaller text, while the 2nd row will be the currentNumber value, displayed in larger text.
 
 ###########
 ## OTHER ##
