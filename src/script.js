@@ -2,10 +2,12 @@ let currentNumber = "";
 
 let displayingResult = false;
 let powerON = true;
+let DEBUG = false;
 
 let displayWindow = document.getElementById("display-text");
 
 let expr = [];
+const acceptableOperations = ["+","-","*","^","/"];
 
 updateDisplay();
 
@@ -41,21 +43,32 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 /***  FUNCTION DEFS  ***/
 
 function addNum(){
-	if(!isNaN(Number(currentNumber))){
+	if(!isNaN(Number(currentNumber)) && currentNumber != null){
 		expr.push(currentNumber);
 		currentNumber = "";
 		updateDisplay();
+		return true;
 	} else {
-		console.log("Error in addNum(), currentNumber '" + currentNumber + "' is not a number");
+		if(DEBUG){
+			console.log("Error in addNum(), currentNumber '" + currentNumber + "' is not a number");
+		}
 		displayWindow.innerHTML = "Err"
+		return false;
 	}
 }
 
 function addOp(op){
-	if(currentNumber != ""){
-		addNum();
+	if(addNum() && acceptableOperations.includes(op)){
 		expr.push(op);
 		updateDisplay();
+		if(DEBUG){
+			console.log("expr array current state:  " + expr);
+		}
+	} else {
+		if(DEBUG){
+			console.log("Error occured in addOp(), value '" + op + "' not added to expr array.");
+			console.log("currentNumber value is " + currentNumber);
+		}
 	}
 }
 
@@ -119,7 +132,9 @@ function updateCurrentNumber(num){
 	}
 	currentNumber = currentNumber.concat(num);
 	updateDisplay();
-	//console.log("currentNumber value:  " + currentNumber);
+	if(DEBUG){
+		console.log("currentNumber value updated:  " + currentNumber);
+	}
 }
 
 function updateDisplay(){
@@ -134,7 +149,5 @@ function updateDisplay(){
 				displayWindow.innerHTML = getDisplayString();
 			}
 		}
-		//console.log("currentNumber value:  " + currentNumber);
-		//console.log("expr array:  " + expr);
 	}
 }
