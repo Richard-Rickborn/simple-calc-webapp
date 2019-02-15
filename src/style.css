@@ -66,6 +66,22 @@ html, body{
 	position: absolute;
 }
 
+.btn-row-1{
+	top: 3%;
+}
+
+.btn-row-2{
+	top: 27%;
+}
+
+.btn-row-3{
+	top: 51%;
+}
+
+.btn-row-4{
+	top: 75%;
+}
+
 #system-buttons{
 	height: 100%;
 	width: 15%;
@@ -80,22 +96,6 @@ html, body{
 	height: 22%;
 	width: 80%;
 	left: 10%;
-}
-
-#btn-ON{
-	top: 3%;
-}
-
-#btn-CE{
-	top: 27%;
-}
-
-#btn-OFF{
-	top: 51%;
-}
-
-#btn-AC{
-	top: 75%;
 }
 
 #numpad-buttons{
@@ -113,64 +113,19 @@ html, body{
 	width: 30%;
 }
 
-#btn-7{
+.num-col-1{
 	left: 3%;
-	top: 3%;
 }
 
-#btn-8{
+.num-col-2{
 	left: 35%;
-	top: 3%;
 }
 
-#btn-9{
+.num-col-3{
 	right: 3%;
-	top: 3%;
-}
-
-#btn-4{
-	left: 3%;
-	top: 27%
-}
-
-#btn-5{
-	left: 35%;
-	top: 27%
-}
-
-#btn-6{
-	right: 3%;
-	top: 27%
-}
-
-#btn-1{
-	left: 3%;
-	top: 51%;
-}
-
-#btn-2{
-	left: 35%;
-	top: 51%;
-}
-
-#btn-3{
-	right: 3%;
-	top: 51%;
-}
-
-#btn-0{
-	left: 3%;
-	top: 75%;
-}
-
-#btn-00{
-	left: 35%;
-	top: 75%;
 }
 
 #numpad-buttons #btn-dot{
-	right: 3%;
-	top: 75%;
 	font-size: 3em;
 }
 
@@ -195,20 +150,4 @@ html, body{
 
 .op-col-2{
 	left: 51%
-}
-
-.op-row-1{
-	top: 3%;
-}
-
-.op-row-2{
-	top: 27%;
-}
-
-.op-row-3{
-	top: 51%;
-}
-
-.op-row-4{
-	top: 75%;
 }
