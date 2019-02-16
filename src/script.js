@@ -1,4 +1,5 @@
 let currentNumber = "";
+let currentResult = "";
 
 let displayingResult = false;
 let powerON = true;
@@ -7,6 +8,7 @@ let DEBUG = false;
 let displayWindow = document.getElementById("display-text");
 
 let expr = [];
+let previousExpr = [];
 const acceptableOperations = ["+","-","*","^","/"];
 
 updateDisplay();
@@ -43,7 +45,7 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 /***  FUNCTION DEFS  ***/
 
 function addNum(){
-	if(!isNaN(Number(currentNumber)) && currentNumber != null){
+	if(!isNaN(Number(currentNumber)) && currentNumber != null && currentNumber != ""){
 		expr.push(currentNumber);
 		currentNumber = "";
 		updateDisplay();
@@ -72,6 +74,14 @@ function addOp(op){
 	}
 }
 
+function clearMemory(){
+	currentNumber = "";
+	currentResult = "";
+	displayingResult = false;
+	expr = [];
+	previousExpr = [];
+}
+
 function getDisplayString(){
 	let exprString = expr.join("").replace("*","x") + currentNumber;
 	if(exprString == ""){
@@ -91,7 +101,17 @@ function getEvalString(){
 			evalArr.push(expr[i]);
 		}
 	}
+	if(DEBUG == true){
+		console.log("current expression:  " + expr);
+		console.log("evaluation string:  '" + evalArr.join("").replace("--","+") + "'");
+	}
 	return eval(evalArr.join("").replace("--","+"));
+}
+
+function getLastOperation(){
+	let len = previousExpr.length;
+	let lastOperation = [previousExpr[len - 2], previousExpr[len - 1]];
+	return lastOperation;
 }
 
 function plusMinus(){
@@ -105,9 +125,22 @@ function resolveExpression(){
 	if(powerON){
 		if(!displayingResult){
 			addNum();
+			if(DEBUG == true){
+				console.log("previous expression value:  " + previousExpr);
+			}
+			previousExpr = expr;
+			currentResult = getEvalString();
 			displayingResult = true;
 			updateDisplay();
 			expr = [];
+		} else{
+			let lastOperation = getLastOperation();
+			if(DEBUG == true){
+				console.log("lastOperation value:  " + lastOperation);
+			}
+			expr = [String(currentResult)].concat(lastOperation);
+			displayingResult = false;
+			resolveExpression();
 		}
 	}
 }
@@ -115,6 +148,7 @@ function resolveExpression(){
 function turnOnPower(){
 	if(!powerON){
 		powerON = true;
+		clearMemory();
 		updateDisplay();
 	}
 }
@@ -140,7 +174,7 @@ function updateCurrentNumber(num){
 function updateDisplay(){
 	if(powerON){
 		if(displayingResult){
-			displayWindow.innerHTML = getEvalString();
+			displayWindow.innerHTML = currentResult;
 		} else{
 			let displayStr = getDisplayString();
 			if(displayStr == "0" && currentNumber != ""){
