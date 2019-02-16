@@ -12,7 +12,7 @@ The goal of this project is to demonstrate a basic understand of frontend develo
       <h3>[  Features  ]</h3>
   <p>-Basic calculation</p>
   <p>-More advanced operations:  an exponent button and a percentage button</p>
-      -<p><i>percentage functionality coming soon!</i></p>
+      <i>-percentage functionality coming soon!</i>
   <p>-Power functionality:  The calculator can be turned on and off <s>in order to save on virtual battery life</s></p>
   <p>-Basic memory storage:  All stored values are reset on each power on</p>
   <p>-"Equals" button multiple presses:  The calculator remembers the previous expression calculated, and when the "equals" button is pressed multiple times, the calculator will perform the standard functionality of repeating the last operation of the previous command with the currently displaying calculation result.</p>
