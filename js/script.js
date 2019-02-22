@@ -15,7 +15,9 @@ updateDisplay();
 
 let btn_table = {
 	"btn-ON":[function(){turnOnPower();}],
+	"btn-CE":[function(){clearMemory("CE")}],
 	"btn-OFF":[function(){turnOffPower();}],
+	"btn-AC":[function(){clearMemory("AC")}],
 	"btn-7":[function(){updateCurrentNumber("7");}],
 	"btn-8":[function(){updateCurrentNumber("8");}],
 	"btn-9":[function(){updateCurrentNumber("9");}],
@@ -74,12 +76,27 @@ function addOp(op){
 	}
 }
 
-function clearMemory(){
-	currentNumber = "";
-	currentResult = "";
-	displayingResult = false;
-	expr = [];
-	previousExpr = [];
+function clearMemory(clrLvl){
+	if(clrLvl == "AC"){
+		currentNumber = "";
+		currentResult = "";
+		displayingResult = false;
+		expr = [];
+		previousExpr = [];
+	}
+	
+	if(clrLvl == "C"){
+		currentNumber = "";
+		currentResult = "";
+		displayingResult = false;
+		expr = [];
+	}
+	
+	if(clrLvl == "CE"){
+		currentNumber = "";
+	}
+	
+	updateDisplay();
 }
 
 function getDisplayString(){
@@ -148,8 +165,9 @@ function resolveExpression(){
 function turnOnPower(){
 	if(!powerON){
 		powerON = true;
-		clearMemory();
-		updateDisplay();
+		clearMemory("AC");
+	} else{
+		clearMemory("C");
 	}
 }
 
