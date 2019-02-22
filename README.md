@@ -19,6 +19,6 @@ The goal of this project is to demonstrate a basic understanding of frontend dev
       <p>-For example, if you input "2+5" and then press the equals button 3 times, the calculator will display "7", then "12", then "17".</p>
 <br />
      <h3>[  How to run  ]</h3>
-  <p>Currently, project must be downloaded locally, and then you simply open the "src/index.html" file using any modern web browser.  App will be viewable in Github Pages soon!</p>
+  <p>Project page located at https://iamrichr.github.io/simple-calc-webapp/</p>
 <br />
 <br />
