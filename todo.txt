@@ -18,13 +18,15 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 	Hard:  A difficult task that either I know will be extremely time consuming, or a task that I don't even know where to start with.  With where I'm at right now in my knowledge, a hard task would be, for example, setting up a basic server with Node.js (no idea how to do that, would have to sink time into tutorials and reading docs), or rewriting/refactoring large sections of an existing codebase (I know how to do it, but it's certain to take a lot of time).
 
 
+
+
 #############
 ## Styling ##
 #############
 
--[2*] [H] Use media queries to make a mobile-friendly version of the design
+-[1**] [H] Use media queries to make a mobile-friendly version of the design
 	-Figure out how media queries work btw
--[3] [M] there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
+-[2*] [M] there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
 
 
 
@@ -33,22 +35,19 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[1**] [M] Figure out the specific difference in functionality between AC/CE/ON/C, then finish implementing the "system" buttons
--[1**] [M] When pressing the "ON/C" button, if the power is already on, have "C" happen instead of powerOn()
--[2*] [M] Add a check at some point for the legitimacy of numbers being added to the main array.  Maybe in addNum()?
--[2*] [H] Redesign display functionality:  Display should have 2 rows:  1st row will be current working expression, display in smaller text, while the 2nd row will be the currentNumber value, displayed in larger text.
--[3] [M] Add the rest of operations buttons to btn_table
+-[1**] [H] Redesign display functionality:  Display should have 2 rows:  1st row will be current working expression, display in smaller text, while the 2nd row will be the currentNumber value, displayed in larger text.
+-[1**] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
+-[2*] [M] Add the rest of operations buttons to btn_table
 	-the only op button left is "%", which will take a [M] to implement
--[3] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
--[3] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
--[3] [M/H] Make answers return the same decimal precision that was given
-	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
--[3] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
+-[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-Implement scientific notation for results larger than the display limit
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
--[4] [H] Write some tests?
--[5] [L/M] Perhaps implement parentheses buttons?
--[5] [M] There's a LOT of anonymous functions being created in the btn_table.  Might wanna doublecheck the specifics of anonymous functions and find out if there's a downside to using them in that way.
+-[3] [M/H] Make answers return the same decimal precision that was given
+	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
+-[4] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
+
+
+
 
 ###########
 ## OTHER ##
