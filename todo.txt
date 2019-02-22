@@ -1,5 +1,7 @@
 Task listings will be structured like this
-[priority] [time investment/difficulty] -task
+
+"[priority] [time investment/difficulty] -task"
+
 
 priority will be graded from 1 - 5, with 1 being the highest priority:
 	[1**]:  Critical task, do this as soon as possible
@@ -20,9 +22,8 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Styling ##
 #############
 
--[2*] Revamp entire calc design, make it more digital
-	-I've realized that, for a beginner project, styling a digital calculator is actually a more achievable styling goal than trying to use CSS to replicate a real/physical/mechanical aesthetic.  I'd like to come back someday and make a mechanical design for this project, but for now just go for a simpler digital design.
-	-Come up with some design ideas before you commit to any one design, maybe look at other projects for inspiration.
+-[2*] [H] Use media queries to make a mobile-friendly version of the design
+	-Figure out how media queries work btw
 -[3] [M] there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
 
 
