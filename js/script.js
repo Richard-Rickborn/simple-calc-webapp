@@ -173,6 +173,7 @@ function turnOnPower(){
 	if(!powerON){
 		powerON = true;
 		clearMemory("AC");
+		document.getElementById("page-container").style.webkitFilter = "brightness(100%)";
 	} else{
 		clearMemory("C");
 	}
@@ -183,6 +184,7 @@ function turnOffPower(){
 		powerON = false;
 		currNumDisplay.innerHTML = "";
 		exprDisplay.innerHTML = "";
+		document.getElementById("page-container").style.webkitFilter = "brightness(40%)";
 	}
 }
 
