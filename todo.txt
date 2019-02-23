@@ -24,8 +24,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Styling ##
 #############
 
--[1**] [H] Use media queries to make a mobile-friendly version of the design
-	-Figure out how media queries work btw
+-[1**] [M] Fix the weird problem where the CSS won't let you change the font-size property on the buttons
 
 
 
@@ -38,10 +37,8 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 -[2*] [M] Add the rest of operations buttons to btn_table
 	-the only op button left is "%", which will take a [M] to implement
 -[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
-	-Implement scientific notation for results larger than the display limit
+	-The rule should probably be something like "if (getDisplayString() + currentNumber).length > some value then stop accepting inputs"
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
--[3] [M/H] Make answers return the same decimal precision that was given
-	-i.e., if the input is "1.25 + 2.25", the current result is sometimes something like "3.500000004" because of weird floating math issues.  Fix that.
 -[4] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
 
 
