@@ -62,18 +62,24 @@ function addNum(){
 }
 
 function addOp(op){
-	if(addNum() && acceptableOperations.includes(op)){
-		expr.push(op);
-		updateDisplay();
-		if(DEBUG){
-			console.log("expr array current state:  " + expr);
+	if(expr.length == 0 && currentNumber == ""){
+		console.log("test");
+		currentNumber = "0";
+		addOp(op);
+	} else if(expr != [] && (!currentNumber == "")){
+			if(addNum() && acceptableOperations.includes(op)){
+				expr.push(op);
+				updateDisplay();
+				if(DEBUG){
+					console.log("expr array current state:  " + expr);
+				}
+			} else {
+				if(DEBUG){
+					console.log("Error occured in addOp(), value '" + op + "' not added to expr array.");
+					console.log("currentNumber value is " + currentNumber);
+				}
+			}
 		}
-	} else {
-		if(DEBUG){
-			console.log("Error occured in addOp(), value '" + op + "' not added to expr array.");
-			console.log("currentNumber value is " + currentNumber);
-		}
-	}
 }
 
 function clearMemory(clrLvl){
