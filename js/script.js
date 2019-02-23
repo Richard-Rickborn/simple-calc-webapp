@@ -5,7 +5,8 @@ let displayingResult = false;
 let powerON = true;
 let DEBUG = false;
 
-let displayWindow = document.getElementById("display-text");
+let exprDisplay = document.getElementById("display-upperLine");
+let currNumDisplay = document.getElementById("display-mainLine");
 
 let expr = [];
 let previousExpr = [];
@@ -56,7 +57,7 @@ function addNum(){
 		if(DEBUG){
 			console.log("Error in addNum(), currentNumber '" + currentNumber + "' is not a number");
 		}
-		displayWindow.innerHTML = "Err"
+		currNumDisplay.innerHTML = "Err"
 		return false;
 	}
 }
@@ -106,7 +107,7 @@ function clearMemory(clrLvl){
 }
 
 function getDisplayString(){
-	let exprString = expr.join("").replace("*","x") + currentNumber;
+	let exprString = expr.join("").replace("*","x");// + currentNumber;
 	if(exprString == ""){
 		exprString = "0";
 	}
@@ -180,7 +181,8 @@ function turnOnPower(){
 function turnOffPower(){
 	if(powerON){
 		powerON = false;
-		displayWindow.innerHTML = ""
+		currNumDisplay.innerHTML = "";
+		exprDisplay.innerHTML = "";
 	}
 }
 
@@ -198,13 +200,23 @@ function updateCurrentNumber(num){
 function updateDisplay(){
 	if(powerON){
 		if(displayingResult){
-			displayWindow.innerHTML = currentResult;
+			exprDisplay.innerHTML = getDisplayString();
+			currNumDisplay.innerHTML = currentResult;
 		} else{
 			let displayStr = getDisplayString();
 			if(displayStr == "0" && currentNumber != ""){
-				displayWindow.innerHTML = currentNumber;
+				currNumDisplay.innerHTML = currentNumber;
 			} else {
-				displayWindow.innerHTML = getDisplayString();
+				if(displayStr != "0"){
+					exprDisplay.innerHTML = getDisplayString();
+				} else{
+					exprDisplay.innerHTML = "";
+				}
+				if(currentNumber != ""){
+					currNumDisplay.innerHTML = currentNumber;
+				} else{
+					currNumDisplay.innerHTML = "0";
+				}
 			}
 		}
 	}
