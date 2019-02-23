@@ -26,7 +26,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 
 -[1**] [H] Use media queries to make a mobile-friendly version of the design
 	-Figure out how media queries work btw
--[3] [M] there should be some kind of CSS effect when the power's off, like maybe the screen darkens or something
 
 
 
