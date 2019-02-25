@@ -43,6 +43,18 @@ let btn_table = {
 Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
 //pretty sure that's the longest line of javascript I've written so far, just saying
 
+/*
+	Keyboard input?
+	
+	numpad 1-7 = numbers 1-7, obvs
+	
+	pressing enter will either turn on the power (if off) or resolveExpression
+	
+	key_plus = plus button
+	
+	
+	
+*/
 
 
 /***  FUNCTION DEFS  ***/
