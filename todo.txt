@@ -24,7 +24,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Styling ##
 #############
 
--[1**] [M] Fix the weird problem where the CSS won't let you change the font-size property on the buttons
+-no tasks for now, styling seems good for the moment :)
 
 
 
