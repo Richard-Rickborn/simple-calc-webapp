@@ -100,7 +100,7 @@ html, body{
 	top: 15%;
 }
 
-#button-container button{
+#calc-container #button-container button{
 	font-family: sans-serif;
 	font-size: 3em;
 	background-color: #3D5A80;
