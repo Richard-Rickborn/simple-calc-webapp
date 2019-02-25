@@ -46,15 +46,85 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 /*
 	Keyboard input?
 	
+	pressing enter will either turn on the power (if off) or resolveExpression
+	
+	esc = powerOFF
+	
 	numpad 1-7 = numbers 1-7, obvs
 	
-	pressing enter will either turn on the power (if off) or resolveExpression
+	dot or numpad dot = "."
+	
+	ctrl+0 = "00"
+	
+	shift+8 or "*" key = "*"
+	
+	"/" key = "/"
+	
+	"-" key = "-"
+	
+	"+" AND "-" keys at the same time - maybe that's plusminus?
 	
 	key_plus = plus button
 	
 	
 	
 */
+
+document.addEventListener('keydown', function(e){
+	console.log(e.key);
+	switch(e.key){
+		case "7":
+			updateCurrentNumber("7");
+			break;
+		case "8":
+			updateCurrentNumber("8");
+			break;
+		case "9":
+			updateCurrentNumber("9");
+			break;
+		case "4":
+			updateCurrentNumber("4");
+			break;
+		case "5":
+			updateCurrentNumber("5");
+			break;
+		case "6":
+			updateCurrentNumber("6");
+			break;
+		case "1":
+			updateCurrentNumber("1");
+			break;
+		case "2":
+			updateCurrentNumber("2");
+			break;
+		case "3":
+			updateCurrentNumber("3");
+			break;
+		case "0":
+			updateCurrentNumber("0");
+			break;
+		case ".":
+			updateCurrentNumber(".");
+			break;
+		case "*":
+			addOp("*");
+			break;
+		case "+":
+			addOp("+");
+			break;
+		case "Enter":
+			resolveExpression();
+			break;
+		case "/":
+			addOp("/");
+			break;
+		case "-":
+			addOp("-");
+			break;
+		default:
+			break;
+	}
+});
 
 
 /***  FUNCTION DEFS  ***/
@@ -76,7 +146,6 @@ function addNum(){
 
 function addOp(op){
 	if(expr.length == 0 && currentNumber == ""){
-		console.log("test");
 		currentNumber = "0";
 		addOp(op);
 	} else if(expr != [] && (!currentNumber == "")){
