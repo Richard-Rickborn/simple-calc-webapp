@@ -16,9 +16,9 @@ updateDisplay();
 
 let btn_table = {
 	"btn-ON":[function(){turnOnPower();}],
-	"btn-CE":[function(){clearMemory("CE")}],
+	"btn-CE":[function(){clearMemory("CE");}],
 	"btn-OFF":[function(){turnOffPower();}],
-	"btn-AC":[function(){clearMemory("AC")}],
+	"btn-AC":[function(){clearMemory("AC");}],
 	"btn-7":[function(){updateCurrentNumber("7");}],
 	"btn-8":[function(){updateCurrentNumber("8");}],
 	"btn-9":[function(){updateCurrentNumber("9");}],
@@ -73,6 +73,12 @@ Object.keys(btn_table).forEach(function(element){document.getElementById(element
 document.addEventListener('keydown', function(e){
 	console.log(e.key);
 	switch(e.key){
+		case "Escape":
+			turnOffPower();
+			break;
+		case " ":
+			clearMemory("CE");
+			break;
 		case "7":
 			updateCurrentNumber("7");
 			break;
@@ -113,7 +119,11 @@ document.addEventListener('keydown', function(e){
 			addOp("+");
 			break;
 		case "Enter":
-			resolveExpression();
+			if(!powerON){
+				turnOnPower();
+			} else{
+				resolveExpression();
+			}
 			break;
 		case "/":
 			addOp("/");
@@ -229,15 +239,20 @@ function plusMinus(){
 function resolveExpression(){
 	if(powerON){
 		if(!displayingResult){
-			addNum();
-			if(DEBUG == true){
-				console.log("previous expression value:  " + previousExpr);
+			if(expr.length != 0){
+				if(currentNumber == ""){
+					currentNumber = "0";
+				}
+				addNum();
+				if(DEBUG == true){
+					console.log("previous expression value:  " + previousExpr);
+				}
+				previousExpr = expr;
+				currentResult = getEvalString();
+				displayingResult = true;
+				updateDisplay();
+				expr = [];
 			}
-			previousExpr = expr;
-			currentResult = getEvalString();
-			displayingResult = true;
-			updateDisplay();
-			expr = [];
 		} else{
 			let lastOperation = getLastOperation();
 			if(DEBUG == true){
