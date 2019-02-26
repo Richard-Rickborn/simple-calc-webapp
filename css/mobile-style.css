@@ -30,7 +30,11 @@
 	}
 	
 	#calc-container #button-container button{
-		font-size: 10em;
+		font-size: 5em;
+	}
+	
+	#button-container #system-buttons button{
+		font-size: 2.5em;
 	}
 }
 
