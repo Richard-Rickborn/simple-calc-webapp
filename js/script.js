@@ -16,9 +16,9 @@ updateDisplay();
 
 let btn_table = {
 	"btn-ON":[function(){turnOnPower();}],
-	"btn-CE":[function(){clearMemory("CE")}],
+	"btn-CE":[function(){clearMemory("CE");}],
 	"btn-OFF":[function(){turnOffPower();}],
-	"btn-AC":[function(){clearMemory("AC")}],
+	"btn-AC":[function(){clearMemory("AC");}],
 	"btn-7":[function(){updateCurrentNumber("7");}],
 	"btn-8":[function(){updateCurrentNumber("8");}],
 	"btn-9":[function(){updateCurrentNumber("9");}],
@@ -43,6 +43,98 @@ let btn_table = {
 Object.keys(btn_table).forEach(function(element){document.getElementById(element).addEventListener("click",btn_table[element][0]);});
 //pretty sure that's the longest line of javascript I've written so far, just saying
 
+/*
+	Keyboard input?
+	
+	pressing enter will either turn on the power (if off) or resolveExpression
+	
+	esc = powerOFF
+	
+	numpad 1-7 = numbers 1-7, obvs
+	
+	dot or numpad dot = "."
+	
+	ctrl+0 = "00"
+	
+	shift+8 or "*" key = "*"
+	
+	"/" key = "/"
+	
+	"-" key = "-"
+	
+	"+" AND "-" keys at the same time - maybe that's plusminus?
+	
+	key_plus = plus button
+	
+	
+	
+*/
+
+document.addEventListener('keydown', function(e){
+	console.log(e.key);
+	switch(e.key){
+		case "Escape":
+			turnOffPower();
+			break;
+		case " ":
+			clearMemory("CE");
+			break;
+		case "7":
+			updateCurrentNumber("7");
+			break;
+		case "8":
+			updateCurrentNumber("8");
+			break;
+		case "9":
+			updateCurrentNumber("9");
+			break;
+		case "4":
+			updateCurrentNumber("4");
+			break;
+		case "5":
+			updateCurrentNumber("5");
+			break;
+		case "6":
+			updateCurrentNumber("6");
+			break;
+		case "1":
+			updateCurrentNumber("1");
+			break;
+		case "2":
+			updateCurrentNumber("2");
+			break;
+		case "3":
+			updateCurrentNumber("3");
+			break;
+		case "0":
+			updateCurrentNumber("0");
+			break;
+		case ".":
+			updateCurrentNumber(".");
+			break;
+		case "*":
+			addOp("*");
+			break;
+		case "+":
+			addOp("+");
+			break;
+		case "Enter":
+			if(!powerON){
+				turnOnPower();
+			} else{
+				resolveExpression();
+			}
+			break;
+		case "/":
+			addOp("/");
+			break;
+		case "-":
+			addOp("-");
+			break;
+		default:
+			break;
+	}
+});
 
 
 /***  FUNCTION DEFS  ***/
@@ -64,7 +156,6 @@ function addNum(){
 
 function addOp(op){
 	if(expr.length == 0 && currentNumber == ""){
-		console.log("test");
 		currentNumber = "0";
 		addOp(op);
 	} else if(expr != [] && (!currentNumber == "")){
@@ -148,15 +239,20 @@ function plusMinus(){
 function resolveExpression(){
 	if(powerON){
 		if(!displayingResult){
-			addNum();
-			if(DEBUG == true){
-				console.log("previous expression value:  " + previousExpr);
+			if(expr.length != 0){
+				if(currentNumber == ""){
+					currentNumber = "0";
+				}
+				addNum();
+				if(DEBUG == true){
+					console.log("previous expression value:  " + previousExpr);
+				}
+				previousExpr = expr;
+				currentResult = getEvalString();
+				displayingResult = true;
+				updateDisplay();
+				expr = [];
 			}
-			previousExpr = expr;
-			currentResult = getEvalString();
-			displayingResult = true;
-			updateDisplay();
-			expr = [];
 		} else{
 			let lastOperation = getLastOperation();
 			if(DEBUG == true){
