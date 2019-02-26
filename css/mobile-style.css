@@ -32,6 +32,10 @@
 	#calc-container #button-container button{
 		font-size: 5em;
 	}
+	
+	#button-container #system-buttons button{
+		font-size: 2.5em;
+	}
 }
 
 @media only screen and (max-height: 500px) {

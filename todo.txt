@@ -34,6 +34,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ###################
 
 -[1**] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
+-[2*] [M] Move the btn_table and keyboard setup to a separate file to keep the code more organized.   Wrap that setup into two functions that will run (?on page load?)
 -[2*] [M] Add the rest of operations buttons to btn_table
 	-the only op button left is "%", which will take a [M] to implement
 -[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
