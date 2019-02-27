@@ -34,14 +34,11 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[1**] [M] Make a secondary set of event listeners for keyboard presses so that you can enter input either with the on-page buttons or with the keyboard.
--[2*] [M] Move the btn_table and keyboard setup to a separate file to keep the code more organized.   Wrap that setup into two functions that will run (?on page load?)
 -[2*] [M] Add the rest of operations buttons to btn_table
 	-the only op button left is "%", which will take a [M] to implement
 -[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-The rule should probably be something like "if (getDisplayString() + currentNumber).length > some value then stop accepting inputs"
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
--[4] [M] Find a cleaner way to have buttons only work if the power's on.  Maybe make a powerIsOn() function?
 
 
 
@@ -50,6 +47,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## OTHER ##
 ###########
 
--[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing.
+-[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing
+	-Next time you get a chance, just spend a pomodoro making sure there's no more necessary tasks left besides what's on this list, and use any leftover time to plan next moves
 -[3] [M] Readme is setup, but stlying for the readme is not quite working, take some time to learn how github markdown styling actually works and pretty up the readme
 -[4] [H] Look at some other calc webapps for inspiration
