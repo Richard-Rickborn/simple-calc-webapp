@@ -25,7 +25,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 #############
 
 -[2*] [H] Mobile design needs tweaking, set up that remote mobile development thing you read about and try out some different font sizes
--[2*] [H] Chrome Mobile has some kind of weird bug happening where it isn't utilizing my media rules??  So maybe check that out
 
 
 
