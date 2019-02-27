@@ -1,18 +1,7 @@
 window.onload = function(){
-	/*let currentNumber = "";
-	let currentResult = "";
 	
-	let displayingResult = false;
-	let powerON = true;
-	let DEBUG = false;
-
-	let exprDisplay = document.getElementById("display-upperLine");
-	let currNumDisplay = document.getElementById("display-mainLine");
-
-	let expr = [];
-	let previousExpr = [];
-	const acceptableOperations = ["+","-","*","^","/"];*/
-	
+	//global variables are bad practice, for the record
+	//note to self, for the next project structure code in a way to use less global variables
 	window.currentNumber = "";
 	window.currentResult = "";
 	
@@ -29,12 +18,6 @@ window.onload = function(){
 	
 	updateDisplay();
 	setupInput();
-	
-	/*REWRITE CODE:
-		
-		What you'll need to do is create some object that can contain all of the above values, as well as the input values below (maybe in a separate inputHandler object?).  Declare
-	
-	*/
 }
 
 function setupInput(){
