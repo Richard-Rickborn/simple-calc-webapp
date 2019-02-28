@@ -1,7 +1,8 @@
 /***  FUNCTION DEFS  ***/
 
 function addNum(){
-	if(!isNaN(Number(currentNumber)) && currentNumber != null && currentNumber != ""){
+	let cleanNum = currentNumber.replace("%","");
+	if(!isNaN(Number(cleanNum)) && cleanNum != null && cleanNum != ""){
 		expr.push(currentNumber);
 		currentNumber = "";
 		updateDisplay();
@@ -149,7 +150,13 @@ function updateCurrentNumber(num){
 	if(displayingResult){
 		displayingResult = false;
 	}
-	currentNumber = currentNumber.concat(num);
+	if(num == "%"){
+		if(!currentNumber.includes("%") && currentNumber != ""){
+			currentNumber = currentNumber.concat(num);
+		}
+	} else{
+		currentNumber = currentNumber.concat(num);
+	}
 	updateDisplay();
 	if(DEBUG){
 		console.log("currentNumber value updated:  " + currentNumber);
