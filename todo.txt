@@ -33,7 +33,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[1**] [M] Add an "error display" display box on the left side of the display to show any kind of error status.  The "Err" from bad currentNumber values can be shown there, and when the DISPLAY_LIMIT is reached I can show some kind of error message there as well.
+-tasks completed for now, just see to the issues
 
 
 
@@ -42,7 +42,4 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## OTHER ##
 ###########
 
--[2*] [M] Decide on a (soft) completion point for this project, to avoid just iterating on this one project forever instead of moving on to the next great thing
-	-Next time you get a chance, just spend a pomodoro making sure there's no more necessary tasks left besides what's on this list, and use any leftover time to plan next moves
 -[3] [M] Readme is setup, but stlying for the readme is not quite working, take some time to learn how github markdown styling actually works and pretty up the readme
--[4] [H] Look at some other calc webapps for inspiration
