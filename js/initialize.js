@@ -11,6 +11,7 @@ window.onload = function(){
 
 	window.exprDisplay = document.getElementById("display-upperLine");
 	window.currNumDisplay = document.getElementById("display-mainLine");
+	window.errDisplay = document.getElementById("error-display");
 
 	window.expr = [];
 	window.previousExpr = [];
