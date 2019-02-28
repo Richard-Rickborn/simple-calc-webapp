@@ -164,16 +164,19 @@ function updateCurrentNumber(num){
 	if(displayingResult){
 		displayingResult = false;
 	}
-	if(num == "%"){
-		if(!currentNumber.includes("%") && currentNumber != ""){
+	if((getDisplayString() + currentNumber).length <= DISPLAY_LIMIT){
+		console.log("number accepted:  " + num);
+		if(num == "%"){
+			if(!currentNumber.includes("%") && currentNumber != ""){
+				currentNumber = currentNumber.concat(num);
+			}
+		} else{
 			currentNumber = currentNumber.concat(num);
 		}
-	} else{
-		currentNumber = currentNumber.concat(num);
-	}
-	updateDisplay();
-	if(DEBUG){
-		console.log("currentNumber value updated:  " + currentNumber);
+		updateDisplay();
+		if(DEBUG){
+			console.log("currentNumber value updated:  " + currentNumber);
+		}
 	}
 }
 
