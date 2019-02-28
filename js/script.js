@@ -1,7 +1,8 @@
 /***  FUNCTION DEFS  ***/
 
 function addNum(){
-	if(!isNaN(Number(currentNumber)) && currentNumber != null && currentNumber != ""){
+	let cleanNum = currentNumber.replace("%","");
+	if(!isNaN(Number(cleanNum)) && cleanNum != null && cleanNum != ""){
 		expr.push(currentNumber);
 		currentNumber = "";
 		updateDisplay();
@@ -58,6 +59,17 @@ function clearMemory(clrLvl){
 	updateDisplay();
 }
 
+function convertPercentage(percNum,ogNum){
+	let returnVal = "";
+	
+	if(ogNum != undefined){
+		returnVal = String(eval(ogNum)*Number(percNum.replace("%",""))*0.01);
+	} else{
+		returnVal = "0";
+	}
+	return returnVal;
+}
+
 function getDisplayString(){
 	let exprString = expr.join("").replace("*","x");// + currentNumber;
 	if(exprString == ""){
@@ -70,6 +82,9 @@ function getEvalString(){
 	let evalArr = [];
 	let exprLen = expr.length;
 	for(let i = 0; i < exprLen; i++){
+		if(expr[i].includes("%")){
+			expr[i] = convertPercentage(expr[i],eval(evalArr[i-2]));
+		}
 		if(expr[i] == "^"){
 			evalArr.push("Math.pow(" + evalArr.pop() + "," + expr[i+1] + ")");
 			i += 1;
@@ -149,7 +164,13 @@ function updateCurrentNumber(num){
 	if(displayingResult){
 		displayingResult = false;
 	}
-	currentNumber = currentNumber.concat(num);
+	if(num == "%"){
+		if(!currentNumber.includes("%") && currentNumber != ""){
+			currentNumber = currentNumber.concat(num);
+		}
+	} else{
+		currentNumber = currentNumber.concat(num);
+	}
 	updateDisplay();
 	if(DEBUG){
 		console.log("currentNumber value updated:  " + currentNumber);

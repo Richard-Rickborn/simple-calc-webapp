@@ -42,6 +42,7 @@ function setupInput(){
 		"btn-times":[function(){addOp("*");}],
 		"btn-plus":[function(){addOp("+");}],
 		"btn-equals":[function(){resolveExpression();}],
+		"btn-percent":[function(){updateCurrentNumber("%");}],
 		"btn-divide":[function(){addOp("/");}],
 		"btn-minus":[function(){addOp("-");}],
 		"btn-plusminus":[function(){plusMinus();}]
