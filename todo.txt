@@ -33,8 +33,6 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[2*] [M] Add the rest of operations buttons to btn_table
-	-the only op button left is "%", which will take a [M] to implement
 -[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
 	-The rule should probably be something like "if (getDisplayString() + currentNumber).length > some value then stop accepting inputs"
 	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
