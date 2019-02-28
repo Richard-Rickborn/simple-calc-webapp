@@ -59,6 +59,17 @@ function clearMemory(clrLvl){
 	updateDisplay();
 }
 
+function convertPercentage(percNum,ogNum){
+	let returnVal = "";
+	
+	if(ogNum != undefined){
+		returnVal = String(eval(ogNum)*Number(percNum.replace("%",""))*0.01);
+	} else{
+		returnVal = "0";
+	}
+	return returnVal;
+}
+
 function getDisplayString(){
 	let exprString = expr.join("").replace("*","x");// + currentNumber;
 	if(exprString == ""){
@@ -71,6 +82,9 @@ function getEvalString(){
 	let evalArr = [];
 	let exprLen = expr.length;
 	for(let i = 0; i < exprLen; i++){
+		if(expr[i].includes("%")){
+			expr[i] = convertPercentage(expr[i],eval(evalArr[i-2]));
+		}
 		if(expr[i] == "^"){
 			evalArr.push("Math.pow(" + evalArr.pop() + "," + expr[i+1] + ")");
 			i += 1;
