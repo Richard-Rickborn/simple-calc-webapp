@@ -33,9 +33,7 @@ time investment/difficulty will be graded on a pretty loose scale of light, medi
 ## Functionality ##
 ###################
 
--[2*] [H] Look into the upper limits of the display size, eventually make it so that input is no longer accepted after display maxes out
-	-The rule should probably be something like "if (getDisplayString() + currentNumber).length > some value then stop accepting inputs"
-	-Make any kind of display-limit code based on a const DIGIT_LIMIT value, because as the design changes the value of DIGIT_LIMIT is going to change as well.
+-[1**] [M] Add an "error display" display box on the left side of the display to show any kind of error status.  The "Err" from bad currentNumber values can be shown there, and when the DISPLAY_LIMIT is reached I can show some kind of error message there as well.
 
 
 

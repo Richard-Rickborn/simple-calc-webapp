@@ -14,6 +14,7 @@ window.onload = function(){
 
 	window.expr = [];
 	window.previousExpr = [];
+	window.DISPLAY_LIMIT = 24;
 	window.acceptableOperations = ["+","-","*","^","/"];
 	
 	updateDisplay();
