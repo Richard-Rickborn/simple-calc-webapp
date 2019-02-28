@@ -11,7 +11,7 @@ function addNum(){
 		if(DEBUG){
 			console.log("Error in addNum(), currentNumber '" + currentNumber + "' is not a number");
 		}
-		currNumDisplay.innerHTML = "Err"
+		errDisplay.innerHTML = "Error: invalid number"
 		return false;
 	}
 }
@@ -43,6 +43,7 @@ function clearMemory(clrLvl){
 		displayingResult = false;
 		expr = [];
 		previousExpr = [];
+		errDisplay.innerHTML = "";
 	}
 	
 	if(clrLvl == "C"){
@@ -50,10 +51,12 @@ function clearMemory(clrLvl){
 		currentResult = "";
 		displayingResult = false;
 		expr = [];
+		errDisplay.innerHTML = "";
 	}
 	
 	if(clrLvl == "CE"){
 		currentNumber = "";
+		errDisplay.innerHTML = "";
 	}
 	
 	updateDisplay();
@@ -165,7 +168,6 @@ function updateCurrentNumber(num){
 		displayingResult = false;
 	}
 	if((getDisplayString() + currentNumber).length <= DISPLAY_LIMIT){
-		console.log("number accepted:  " + num);
 		if(num == "%"){
 			if(!currentNumber.includes("%") && currentNumber != ""){
 				currentNumber = currentNumber.concat(num);
@@ -177,6 +179,8 @@ function updateCurrentNumber(num){
 		if(DEBUG){
 			console.log("currentNumber value updated:  " + currentNumber);
 		}
+	} else{
+		errDisplay.innerHTML = "Display Limit reached";
 	}
 }
 
