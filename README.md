@@ -1,7 +1,7 @@
 # simple-calc-webapp
 <br />
 <h3>[  What is this?  ]</h3>
-This is a calculator web application built using (vanilla, no framworks) HTML/CSS/Javascript.
+This is a calculator web application built using vanilla HTML, CSS, and Javascript, without using any frameworks or libraries.
 <br />
 This app is my first serious web development project.  The purpose of this app is to show where my frontend development skills are at the beginning of my web development learning process.  This application is the culmination of one month of HTML/CSS/Javascript learning, as well as one month spent building this project, which is 90% complete as of February 28th, 2019.
 <br />
