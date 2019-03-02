@@ -121,17 +121,17 @@ html, body{
 	outline: none;
 }
 
-#button-container button:hover{
+#calc-container #button-container button:hover{
 	background-color: #293d56;
 	color: #83C9F4;
 	border: 1px solid #83C9F4;
 }
 
-#button-container button:focus{
+#calc-container #button-container button:focus{
 	outline: none;
 }
 
-#button-container button:active{
+#calc-container #button-container button:active{
 	background-color: #537aac;
 	color: #e8fcfd;
 }
